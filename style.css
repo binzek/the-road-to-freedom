@@ -4,3 +4,145 @@
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
+
+:root {
+  --color-white: #e8e8e8;
+  --color-red: #f05454;
+  --color-blue: #30475e;
+  --color-black: #222831;
+  --font-primary: "Quattrocento", serif; /* 400, 700 */
+  --font-secondary: "Lora", serif; /* 400, 400i, 600 */
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+header {
+  width: 90%;
+  margin: 30px auto;
+}
+
+header > h1 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--color-red);
+}
+
+header > p {
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+header > p > span {
+  display: block;
+  font-style: italic;
+}
+
+.timeline {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  width: 1.4px;
+  height: 100%;
+  background-color: var(--color-blue);
+  position: absolute;
+}
+
+.timeline-item {
+  margin-bottom: 30px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item__date {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  color: var(--color-blue);
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.timeline-item__date::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-red);
+  position: absolute;
+  left: -18.5px;
+  top: 5px;
+  border-radius: 50%;
+}
+
+.timeline-item__content {
+  margin-top: 7px;
+}
+
+.timeline-item__content > h3 {
+  font-family: var(--font-primary);
+  color: var(--color-red);
+  font-size: 1.2rem;
+}
+
+.timeline-item__content > p {
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+}
+
+footer {
+  padding: 40px 0 10px 0;
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+}
+
+footer > a {
+  text-decoration: none;
+  color: var(--color-black);
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  header {
+    text-align: center;
+  }
+
+  .timeline::before {
+    left: calc(50% - 0.7px);
+  }
+
+  .timeline-item:nth-child(odd) {
+    margin-left: calc(50% - 0.7px);
+  }
+
+  .timeline-item:nth-child(even) {
+    margin-right: calc(50% + 15px);
+    text-align: right;
+  }
+
+  .timeline-item:nth-child(even) .timeline-item__date::before {
+    left: auto;
+    right: -19px;
+  }
+}
+
+@media (min-width: 1440px) {
+  header,
+  .timeline {
+    width: 60%;
+  }
+}
